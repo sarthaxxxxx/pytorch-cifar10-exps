@@ -76,7 +76,7 @@ class Network(nn.Module):
 def train(dataloader,model,criterion,optimiser):
     model.train()
     print("Model Training.....")
-    for epoch in range(hparams['start_epoch'],hparams['start_epoch']+5):
+    for epoch in range(hparams['start_epoch'],hparams['start_epoch']+200):
         train_loss=0 ; correct=0 ; print("Epoch:{}".format(epoch+1))
         for idx,data in enumerate(dataloader):
             image,label=data
@@ -95,7 +95,7 @@ def train(dataloader,model,criterion,optimiser):
         torch.save(model.state_dict(),os.path.join('./models',"Epoch_"+str(epoch+1)+'.pth.tar'))
 
 def test(dataloader):
-    for epoch in range(hparams['start_epoch'],hparams['start_epoch']+7):
+    for epoch in range(hparams['start_epoch'],hparams['start_epoch']+200):
         print(epoch+1)
         models_path=os.path.join('./models',"Epoch_"+str(epoch+1)+'.pth.tar')
         model.load_state_dict(torch.load(models_path))
