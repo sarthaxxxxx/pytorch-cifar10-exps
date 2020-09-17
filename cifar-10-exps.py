@@ -114,11 +114,11 @@ def test(dataloader):
         accuracy=100*(correct)/total
         if accuracy>hparams['best_acc']:
             hparams['best_acc']=accuracy
-            #print("Saving...")
-            #state={'Model':model.state_dict(),'Accuracy':accuracy,'Epoch':epoch}
-            #if not os.path.exists('/checkpoints'):
-                #os.mkdir('/checkpoints')
-            #torch.save(state,os.path.join('./checkpoints/ckpt.pth'))
+            print("Saving...")
+            state={'Model':model.state_dict(),'Accuracy':accuracy,'Epoch':epoch}
+            if not os.path.exists('/checkpoints'):
+                os.mkdir('/checkpoints')
+            torch.save(state,os.path.join('./checkpoints/ckpt.pth'))
 
     print(accuracy,total)
 
